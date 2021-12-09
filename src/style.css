@@ -152,7 +152,8 @@ table {
   padding: 1em;
 }
 
-p {
+.taskText {
+  color: gray;
   margin: 0 0 0 1em;
 }
 
