@@ -1,5 +1,3 @@
-import { saveLocalData } from './completed.js';
-
 const compare = (a, b) => {
   if (a.index < b.index) {
     return -1;
@@ -18,11 +16,25 @@ const createList = (items) => {
     if (item.completed) {
       checked = ' checked';
     }
-    updatedTasks += `<div class="item${checked}"><input class="checkbox" value="${item.index}" type="checkbox"${checked}><input class="taskText" type="text" value="${item.description}"><i class="fas fa-ellipsis-v"></i></div>`;
+    updatedTasks += `<div class="item${checked}"><input class="checkbox" value="${item.index}" type="checkbox"${checked}><input class="taskText" type="text" value="${item.description}"><i class="far fa-trash-alt"></i></div>`;
   });
   const list = document.getElementById('todolist');
   list.innerHTML = updatedTasks;
 };
+
+export default function deleteTask(items) {
+  const deleteButtons = document.querySelectorAll('i');
+  deleteButtons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+      items.splice(index, 1);
+      items.forEach((item, i) => {
+        item.index = (i + 1);
+      });
+      localStorage.localData = JSON.stringify(items);
+      createList(items);
+    });
+  });
+}
 
 function addTask(items) {
   const input = document.querySelector('.add');
@@ -36,19 +48,9 @@ function addTask(items) {
       items.push(newTask);
       createList(items);
       input.value = '';
-      saveLocalData(items);
+      localStorage.localData = JSON.stringify(items);
     }
   });
 }
 
-function editDescriptions(items) {
-  const taskDescriptions = document.querySelectorAll('.taskText');
-  taskDescriptions.forEach((task, index) => {
-    task.addEventListener('input', () => {
-      items[index].description = task.value;
-      saveLocalData(items);
-    });
-  });
-}
-
-export { addTask, createList, editDescriptions };
+export { addTask, createList, deleteTask };

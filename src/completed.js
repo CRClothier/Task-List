@@ -1,16 +1,13 @@
-const saveLocalData = (items) => {
-  const localData = JSON.stringify(items);
-  localStorage.localData = localData;
+const checkBox = (index, items) => {
+  items[index].completed = !items[index].completed;
+  localStorage.localData = JSON.stringify(items);
 };
 
-function addCheckboxEvents(items) {
+export default function addCheckboxEvents(items) {
   const checkboxes = document.querySelectorAll('.checkbox');
   checkboxes.forEach((checkbox, index) => {
     checkbox.addEventListener('change', () => {
-      items[index].completed = !items[index].completed;
-      saveLocalData(items);
+      checkBox(index, items);
     });
   });
 }
-
-export { saveLocalData, addCheckboxEvents };

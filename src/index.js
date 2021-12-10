@@ -1,6 +1,7 @@
 import './style.css';
-import { addCheckboxEvents } from './completed.js';
-import { addTask, createList, editDescriptions } from './addtask.js';
+import addCheckboxEvents from './completed.js';
+import { addTask, createList, deleteTask } from './addtask.js';
+import editDescriptions from './editDescription.js';
 
 let items = [
   {
@@ -31,3 +32,4 @@ createList(items);
 addTask(items);
 addCheckboxEvents(items);
 editDescriptions(items);
+deleteTask(items);
