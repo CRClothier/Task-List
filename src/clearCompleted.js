@@ -10,6 +10,7 @@ export default function clearAll(items) {
       }
     }
     items = items.filter((x) => !checkedTasks.includes(x));
+    localStorage.localData = JSON.stringify(items);
     createList(items);
   });
 }
