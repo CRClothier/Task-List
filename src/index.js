@@ -1,7 +1,5 @@
 import './style.css';
-import addCheckboxEvents from './completed.js';
-import { addTask, createList, deleteTask } from './addtask.js';
-import editDescriptions from './editDescription.js';
+import { addTask, createList } from './addtask.js';
 
 let items = [
   {
@@ -30,6 +28,3 @@ const getLocalData = () => {
 getLocalData();
 createList(items);
 addTask(items);
-addCheckboxEvents(items);
-editDescriptions(items);
-deleteTask(items);

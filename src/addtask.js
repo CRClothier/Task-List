@@ -1,3 +1,8 @@
+// eslint-disable-next-line import/no-cycle
+import deleteTask from './deleteTask.js';
+import addCheckboxEvents from './completed.js';
+import editDescriptions from './editDescription.js';
+
 const compare = (a, b) => {
   if (a.index < b.index) {
     return -1;
@@ -20,21 +25,10 @@ const createList = (items) => {
   });
   const list = document.getElementById('todolist');
   list.innerHTML = updatedTasks;
+  addCheckboxEvents(items);
+  editDescriptions(items);
+  deleteTask(items);
 };
-
-export default function deleteTask(items) {
-  const deleteButtons = document.querySelectorAll('i');
-  deleteButtons.forEach((button, index) => {
-    button.addEventListener('click', () => {
-      items.splice(index, 1);
-      items.forEach((item, i) => {
-        item.index = (i + 1);
-      });
-      localStorage.localData = JSON.stringify(items);
-      createList(items);
-    });
-  });
-}
 
 function addTask(items) {
   const input = document.querySelector('.add');
@@ -53,4 +47,4 @@ function addTask(items) {
   });
 }
 
-export { addTask, createList, deleteTask };
+export { addTask, createList };
