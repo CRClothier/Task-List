@@ -120,6 +120,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/clearCompleted.js":
+/*!*******************************!*\
+  !*** ./src/clearCompleted.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ clearAll)\n/* harmony export */ });\n/* harmony import */ var _addtask_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./addtask.js */ \"./src/addtask.js\");\n\n\nfunction clearAll(items) {\n  const checkedTasks = [];\n  const deleteButton = document.querySelector('.delete');\n  deleteButton.addEventListener('click', () => {\n    for (let i = 0; i < items.length; i += 1) {\n      if (items[i].completed === true) {\n        checkedTasks.push(items[i]);\n      }\n    }\n    items = items.filter((x) => !checkedTasks.includes(x));\n    (0,_addtask_js__WEBPACK_IMPORTED_MODULE_0__.createList)(items);\n  });\n}\n\n//# sourceURL=webpack://task-list/./src/clearCompleted.js?");
+
+/***/ }),
+
 /***/ "./src/completed.js":
 /*!**************************!*\
   !*** ./src/completed.js ***!
@@ -156,7 +166,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _addtask_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./addtask.js */ \"./src/addtask.js\");\n\n\n\nlet items = [\n  {\n    description: 'Eat hamburgers',\n    completed: false,\n    index: 1,\n  },\n  {\n    description: 'Steal neighbours dog',\n    completed: false,\n    index: 3,\n  },\n  {\n    description: 'Become millionaire',\n    completed: false,\n    index: 2,\n  },\n];\n\nconst getLocalData = () => {\n  if (localStorage.getItem('localData')) {\n    items = JSON.parse(localStorage.localData);\n  }\n};\n\ngetLocalData();\n(0,_addtask_js__WEBPACK_IMPORTED_MODULE_1__.createList)(items);\n(0,_addtask_js__WEBPACK_IMPORTED_MODULE_1__.addTask)(items);\n\n//# sourceURL=webpack://task-list/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _addtask_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./addtask.js */ \"./src/addtask.js\");\n/* harmony import */ var _clearCompleted_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./clearCompleted.js */ \"./src/clearCompleted.js\");\n\n\n\n\nlet items = [];\n\nconst getLocalData = () => {\n  if (localStorage.getItem('localData')) {\n    items = JSON.parse(localStorage.localData);\n  }\n};\n\ngetLocalData();\n(0,_addtask_js__WEBPACK_IMPORTED_MODULE_1__.createList)(items);\n(0,_addtask_js__WEBPACK_IMPORTED_MODULE_1__.addTask)(items);\n(0,_clearCompleted_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(items);\n\n//# sourceURL=webpack://task-list/./src/index.js?");
 
 /***/ })
 
