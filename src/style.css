@@ -150,6 +150,7 @@ table {
 
 .delete {
   padding: 1em;
+  background-color: #f3f3f3;
 }
 
 .taskText {
